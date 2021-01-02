@@ -1,0 +1,9 @@
+Start secpanel from Ubuntu->Applications
+Select Robot
+Click on 'Connect' button
+Click on 'SFTP'
+
+ubuntu@ubiquityrobot:~/Desktop/Robotics/robocoderpi
+cd ~/Desktop/Robotics/robocoderpi
+python MotorControlCloudRPI.py
+python RobotSensorLoad1.py
