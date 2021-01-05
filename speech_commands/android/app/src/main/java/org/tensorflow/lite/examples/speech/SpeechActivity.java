@@ -56,6 +56,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -66,6 +67,16 @@ import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 import org.tensorflow.lite.Interpreter;
 
+import org.eclipse.paho.android.service.MqttAndroidClient;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import java.io.UnsupportedEncodingException;
 /**
  * An activity that listens for audio and then uses a TensorFlow model to detect particular classes,
  * by default a small set of action words.
@@ -91,7 +102,8 @@ public class SpeechActivity extends Activity
   // UI elements.
   private static final int REQUEST_RECORD_AUDIO = 13;
   private static final String LOG_TAG = SpeechActivity.class.getSimpleName();
-
+  MqttAndroidClient client = null;
+  boolean validMQTT=false;
   // Working variables.
   short[] recordingBuffer = new short[RECORDING_LENGTH];
   int recordingOffset = 0;
@@ -147,7 +159,7 @@ public class SpeechActivity extends Activity
     // Set up the UI.
     super.onCreate(savedInstanceState);
     setContentView(R.layout.tfe_sc_activity_speech);
-
+    connect();
     // Load the labels for the model, but only display those that don't start
     // with an underscore.
     String actualLabelFilename = LABEL_FILENAME.split("file:///android_asset/", -1)[1];
@@ -263,6 +275,111 @@ public class SpeechActivity extends Activity
     minusImageView.setOnClickListener(this);
 
     sampleRateTextView.setText(SAMPLE_RATE + " Hz");
+
+  }
+
+  public void connect(){
+    Log.d("file", "Start Connecting with MQTT");
+    String clientId = MqttClient.generateClientId();
+//    final MqttAndroidClient client =
+    client =
+            new MqttAndroidClient(this.getApplicationContext(), "tcp://digitran-mqtt.tk:1883",
+                    clientId);
+
+    MqttConnectOptions options = new MqttConnectOptions();
+    options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
+    options.setCleanSession(false);
+//        options.setUserName("no");
+//        options.setPassword("no".toCharArray());
+    try {
+      IMqttToken token = client.connect(options);
+      Log.d("file", "Set action listener callback for MQTT");
+      //IMqttToken token = client.connect();
+      token.setActionCallback(new IMqttActionListener() {
+        @Override
+        public void onSuccess(IMqttToken asyncActionToken) {
+          // We are connected
+          Log.d("file", "onSuccess");
+          validMQTT=true;
+          //publish(client,"payloadd");
+          subscribe(client,"dht");
+          subscribe(client,"bmp");
+          client.setCallback(new MqttCallback() {
+//            TextView tt = (TextView) findViewById(R.id.tt);
+//            TextView th = (TextView) findViewById(R.id.th);
+            @Override
+            public void connectionLost(Throwable cause) {
+
+            }
+            @Override
+            public void messageArrived(String topic, MqttMessage message) throws Exception {
+              Log.d("file", message.toString());
+
+              if (topic.equals("dht")){
+//                tt.setText(message.toString());
+                Log.d("file", "dht received");
+              }
+
+              if (topic.equals("bmp")){
+//                th.setText(message.toString());
+                Log.d("file", "bmp received");
+              }
+
+            }
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken token) {
+
+            }
+          });
+        }
+
+        @Override
+        public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+          // Something went wrong e.g. connection timeout or firewall problems
+          Log.d("file", "onFailure");
+          validMQTT=false;
+
+        }
+      });
+    } catch (MqttException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void publish(MqttAndroidClient client, String payload){
+    String topic = "command";
+    byte[] encodedPayload = new byte[0];
+    try {
+      encodedPayload = payload.getBytes("UTF-8");
+      MqttMessage message = new MqttMessage(encodedPayload);
+      client.publish(topic, message);
+    } catch (UnsupportedEncodingException | MqttException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void subscribe(MqttAndroidClient client , String topic){
+    int qos = 1;
+    try {
+      IMqttToken subToken = client.subscribe(topic, qos);
+      subToken.setActionCallback(new IMqttActionListener() {
+
+        @Override
+        public void onSuccess(IMqttToken asyncActionToken) {
+          // The message was published
+        }
+
+        @Override
+        public void onFailure(IMqttToken asyncActionToken,
+                              Throwable exception) {
+          // The subscription could not be performed, maybe the user was not
+          // authorized to subscribe on the specified topic e.g. using wildcards
+
+        }
+      });
+    } catch (MqttException e) {
+      e.printStackTrace();
+    }
   }
 
   private void requestMicrophonePermission() {
@@ -443,43 +560,56 @@ public class SpeechActivity extends Activity
                     labelIndex = i;
                   }
                 }
-
+                String command = "NotValid";
                 switch (labelIndex - 2) {
                   case 0:
                     selectedTextView = yesTextView;
+                    command = "yes";
                     break;
                   case 1:
                     selectedTextView = noTextView;
+                    command = "no";
                     break;
                   case 2:
                     selectedTextView = upTextView;
+                    command = "up";
                     break;
                   case 3:
                     selectedTextView = downTextView;
+                    command = "down";
                     break;
                   case 4:
                     selectedTextView = leftTextView;
+                    command = "left";
                     break;
                   case 5:
                     selectedTextView = rightTextView;
+                    command = "right";
                     break;
                   case 6:
                     selectedTextView = onTextView;
+                    command = "on";
                     break;
                   case 7:
                     selectedTextView = offTextView;
+                    command = "off";
                     break;
                   case 8:
                     selectedTextView = stopTextView;
+                    command = "stop";
                     break;
                   case 9:
                     selectedTextView = goTextView;
+                    command = "go";
                     break;
                 }
 
                 if (selectedTextView != null) {
                   selectedTextView.setBackgroundResource(R.drawable.round_corner_text_bg_selected);
                   final String score = Math.round(result.score * 100) + "%";
+                  if(validMQTT==true) {
+                    publish(client, command);
+                  }
                   selectedTextView.setText(selectedTextView.getText() + "\n" + score);
                   selectedTextView.setTextColor(
                       getResources().getColor(android.R.color.holo_orange_light));

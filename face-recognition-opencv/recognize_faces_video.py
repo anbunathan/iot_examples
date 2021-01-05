@@ -13,7 +13,10 @@ import cv2
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-e", "--encodings", required=True,
+ap.add_argument("-e", "--encodings",
+				type=str,
+				nargs='?',
+				default='encodings.pickle',
 	help="path to serialized db of facial encodings")
 ap.add_argument("-o", "--output", type=str,
 	help="path to output video")

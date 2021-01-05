@@ -9,11 +9,19 @@ import cv2
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-e", "--encodings", required=True,
+ap.add_argument("-e", "--encodings",
+				type=str,
+				nargs='?',
+				default='encodings.pickle',
 	help="path to serialized db of facial encodings")
-ap.add_argument("-i", "--image", required=True,
+ap.add_argument("-i", "--image",
+				type=str,
+				nargs='?',
+				default='examples/example_01.png',
 	help="path to input image")
-ap.add_argument("-d", "--detection-method", type=str, default="cnn",
+ap.add_argument("-d", "--detection-method",
+				type=str,
+				default="cnn",
 	help="face detection model to use: either `hog` or `cnn`")
 args = vars(ap.parse_args())
 
@@ -76,4 +84,4 @@ for ((top, right, bottom, left), name) in zip(boxes, names):
 
 # show the output image
 cv2.imshow("Image", image)
-cv2.waitKey(0)
+# cv2.waitKey(0)
