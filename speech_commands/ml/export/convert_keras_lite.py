@@ -13,18 +13,15 @@
 # limitations under the License.
 # ==============================================================================
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import tensorflow.compat.v1 as tf
+from keras import backend as K
+from keras.utils import CustomObjectScope
 
-keras_model = "../conv_1d_time_stacked_model/ep-084-vl-0.2595.hdf5"
-input_arrays = ["the_input"]
-output_arrays = ["the_output"]
+def relu6(x):
+    return K.relu(x, max_value=6)
 
-converter = tf.lite.TFLiteConverter
-converter = converter.from_keras_model_file(keras_model, input_arrays,
-                                            output_arrays)
-tflite_model = converter.convert()
-open("converted_speed_keras_model.tflite", "wb").write(tflite_model)
+with CustomObjectScope({'relu6': relu6}):
+    tflite_model = tf.lite.TFLiteConverter.from_keras_model_file(
+        'speech_commands.hdf5').convert()
+    with open('model.tflite', 'wb') as f:
+        f.write(tflite_model)
