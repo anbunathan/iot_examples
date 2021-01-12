@@ -33,7 +33,7 @@
             android:weightSum="1">
 
             <LinearLayout
-                android:id="@+id/up_layout"
+                android:id="@+id/open_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
@@ -48,18 +48,18 @@
                     android:src="@drawable/icn_up" />
 
                 <TextView
-                    android:id="@+id/up"
+                    android:id="@+id/open"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:gravity="center"
-                    android:text="UP"
+                    android:text="OPEN"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/down_layout"
+                android:id="@+id/close_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
@@ -74,18 +74,18 @@
                     android:src="@drawable/icn_down" />
 
                 <TextView
-                    android:id="@+id/down"
+                    android:id="@+id/close"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:gravity="center"
-                    android:text="DOWN"
+                    android:text="CLOSE"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/left_layout"
+                android:id="@+id/none_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
@@ -100,163 +100,163 @@
                     android:src="@drawable/icn_left" />
 
                 <TextView
-                    android:id="@+id/left"
+                    android:id="@+id/none"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="1dp"
                     android:gravity="center"
-                    android:text="LEFT"
+                    android:text="NONE"
                     android:textColor="@android:color/darker_gray" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/right_layout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:layout_weight=".25"
-                android:background="@drawable/base"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/right_layout"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="4dp"-->
+<!--                android:layout_weight=".25"-->
+<!--                android:background="@drawable/base"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icn_right" />
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/icn_right" />-->
 
-                <TextView
-                    android:id="@+id/right"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:gravity="center"
-                    android:text="RIGHT"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/right"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="RIGHT"-->
+<!--                    android:textColor="@android:color/darker_gray"-->
+<!--                    android:textSize="12sp" />-->
+<!--            </LinearLayout>-->
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="1">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="1">-->
 
-            <LinearLayout
-                android:id="@+id/left_click_layout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:layout_weight=".25"
-                android:background="@drawable/base"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/left_click_layout"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="4dp"-->
+<!--                android:layout_weight=".25"-->
+<!--                android:background="@drawable/base"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/icn_left_click" />
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/icn_left_click" />-->
 
-                <TextView
-                    android:id="@+id/left_click"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="1dp"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:maxLines="2"
-                    android:text="LEFT CLICK"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/left_click"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:lines="2"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="LEFT CLICK"-->
+<!--                    android:textColor="@android:color/darker_gray"-->
+<!--                    android:textSize="12sp" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:id="@+id/right_click_layout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:layout_weight=".25"
-                android:background="@drawable/base"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/right_click_layout"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="4dp"-->
+<!--                android:layout_weight=".25"-->
+<!--                android:background="@drawable/base"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icn_right_click" />
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/icn_right_click" />-->
 
-                <TextView
-                    android:id="@+id/right_click"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:maxLines="2"
-                    android:text="RIGHT CLICK"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/right_click"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:lines="2"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="RIGHT CLICK"-->
+<!--                    android:textColor="@android:color/darker_gray"-->
+<!--                    android:textSize="12sp" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:id="@+id/scroll_up_layout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:layout_weight=".25"
-                android:background="@drawable/base"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/scroll_up_layout"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="4dp"-->
+<!--                android:layout_weight=".25"-->
+<!--                android:background="@drawable/base"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icn_scroll_up" />
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/icn_scroll_up" />-->
 
-                <TextView
-                    android:id="@+id/scroll_up"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:maxLines="2"
-                    android:text="SCROLL UP"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/scroll_up"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:lines="2"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="SCROLL UP"-->
+<!--                    android:textColor="@android:color/darker_gray"-->
+<!--                    android:textSize="12sp" />-->
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:id="@+id/scroll_down_layout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="4dp"
-                android:layout_weight=".25"
-                android:background="@drawable/base"
-                android:gravity="center"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/scroll_down_layout"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="4dp"-->
+<!--                android:layout_weight=".25"-->
+<!--                android:background="@drawable/base"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/icn_scroll_down" />
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/icn_scroll_down" />-->
 
-                <TextView
-                    android:id="@+id/scroll_down"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
-                    android:gravity="center"
-                    android:lines="2"
-                    android:maxLines="2"
-                    android:text="SCROLL DOWN"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/scroll_down"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="1dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:lines="2"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="SCROLL DOWN"-->
+<!--                    android:textColor="@android:color/darker_gray"-->
+<!--                    android:textSize="12sp" />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
     </LinearLayout>
 
     <LinearLayout

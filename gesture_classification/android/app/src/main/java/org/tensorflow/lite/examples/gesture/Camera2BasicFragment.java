@@ -100,12 +100,12 @@ public class Camera2BasicFragment extends Fragment
   private ImageClassifier classifier;
   private LinearLayout upLayout,
       downLayout,
-      leftLayout,
-      rightLayout,
-      leftClickLayout,
-      rightClickLayout,
-      scrollUpLayout,
-      scrollDownLayout;
+      leftLayout;
+//      rightLayout,
+//      leftClickLayout,
+//      rightClickLayout,
+//      scrollUpLayout,
+//      scrollDownLayout;
   private BottomSheetBehavior<LinearLayout> sheetBehavior;
   private LinearLayout bottomSheetLayout;
   private LinearLayout gestureLayout;
@@ -368,14 +368,14 @@ public class Camera2BasicFragment extends Fragment
         });
     sheetBehavior.setHideable(false);
 
-    upLayout = view.findViewById(R.id.up_layout);
-    downLayout = view.findViewById(R.id.down_layout);
-    leftLayout = view.findViewById(R.id.left_layout);
-    rightLayout = view.findViewById(R.id.right_layout);
-    leftClickLayout = view.findViewById(R.id.left_click_layout);
-    rightClickLayout = view.findViewById(R.id.right_click_layout);
-    scrollUpLayout = view.findViewById(R.id.scroll_up_layout);
-    scrollDownLayout = view.findViewById(R.id.scroll_down_layout);
+    upLayout = view.findViewById(R.id.open_layout);
+    downLayout = view.findViewById(R.id.close_layout);
+    leftLayout = view.findViewById(R.id.none_layout);
+//    rightLayout = view.findViewById(R.id.right_layout);
+//    leftClickLayout = view.findViewById(R.id.left_click_layout);
+//    rightClickLayout = view.findViewById(R.id.right_click_layout);
+//    scrollUpLayout = view.findViewById(R.id.scroll_up_layout);
+//    scrollDownLayout = view.findViewById(R.id.scroll_down_layout);
 
     sheetBehavior.setBottomSheetCallback(
         new BottomSheetBehavior.BottomSheetCallback() {
@@ -427,66 +427,68 @@ public class Camera2BasicFragment extends Fragment
     upLayout.setEnabled(false);
     downLayout.setEnabled(false);
     leftLayout.setEnabled(false);
-    rightLayout.setEnabled(false);
-    leftClickLayout.setEnabled(false);
-    rightClickLayout.setEnabled(false);
-    scrollUpLayout.setEnabled(false);
-    scrollDownLayout.setEnabled(false);
+//    rightLayout.setEnabled(false);
+//    leftClickLayout.setEnabled(false);
+//    rightClickLayout.setEnabled(false);
+//    scrollUpLayout.setEnabled(false);
+//    scrollDownLayout.setEnabled(false);
 
     upLayout.setAlpha(0.4f);
     downLayout.setAlpha(0.4f);
     leftLayout.setAlpha(0.4f);
-    rightLayout.setAlpha(0.4f);
-    leftClickLayout.setAlpha(0.4f);
-    rightClickLayout.setAlpha(0.4f);
-    scrollUpLayout.setAlpha(0.4f);
-    scrollDownLayout.setAlpha(0.4f);
+//    rightLayout.setAlpha(0.4f);
+//    leftClickLayout.setAlpha(0.4f);
+//    rightClickLayout.setAlpha(0.4f);
+//    scrollUpLayout.setAlpha(0.4f);
+//    scrollDownLayout.setAlpha(0.4f);
 
     StringTokenizer tokenizer = new StringTokenizer(content, "\n");
     Log.e("amlan", "tokenizer = "+tokenizer);
     while (tokenizer.hasMoreTokens()) {
       String token = tokenizer.nextToken();
       Log.e("amlan", "tokenizer token = "+token);
-      if (token.contains("leftclick")) {
-        leftClickLayout.setEnabled(true);
-        leftClickLayout.setAlpha(1.0f);
-        Log.e("amlan", "leftclickLayout enabled ");
-      } else if (token.contains("rightclick")) {
-        rightClickLayout.setEnabled(true);
-        rightClickLayout.setAlpha(1.0f);
-        Log.e("amlan", "rightclickLayout enabled ");
-      } else if (token.contains("scrollup")) {
-        scrollUpLayout.setEnabled(true);
-        scrollUpLayout.setAlpha(1.0f);
-        Log.e("amlan", "scrollupLayout enabled ");
-//      } else if (token.equalsIgnoreCase("scrolldown")) {
-      } else if (token.contains("scrolldown")) {
-        scrollDownLayout.setEnabled(true);
-        scrollDownLayout.setAlpha(1.0f);
-        Log.e("amlan", "scrolldownLayout enabled ");
-      }else if (token.contains("up")) {
+//      if (token.contains("leftclick")) {
+//        leftClickLayout.setEnabled(true);
+//        leftClickLayout.setAlpha(1.0f);
+//        Log.e("amlan", "leftclickLayout enabled ");
+//      } else if (token.contains("rightclick")) {
+//        rightClickLayout.setEnabled(true);
+//        rightClickLayout.setAlpha(1.0f);
+//        Log.e("amlan", "rightclickLayout enabled ");
+//      } else if (token.contains("scrollup")) {
+//        scrollUpLayout.setEnabled(true);
+//        scrollUpLayout.setAlpha(1.0f);
+//        Log.e("amlan", "scrollupLayout enabled ");
+////      } else if (token.equalsIgnoreCase("scrolldown")) {
+//      } else if (token.contains("scrolldown")) {
+//        scrollDownLayout.setEnabled(true);
+//        scrollDownLayout.setAlpha(1.0f);
+//        Log.e("amlan", "scrolldownLayout enabled ");
+//      }else if (token.contains("up")) {
+      if (token.contains("open")) {
 //      if (token.equalsIgnoreCase("up")) {
         upLayout.setEnabled(true);
         upLayout.setAlpha(1.0f);
         Log.e("amlan", "upLayout enabled ");
 //      } else if (token.equalsIgnoreCase("down")) {
-      } else if (token.contains("down")) {
+      } else if (token.contains("close")) {
         downLayout.setEnabled(true);
         downLayout.setAlpha(1.0f);
         Log.e("amlan", "downLayout enabled ");
 //      } else if (token.equalsIgnoreCase("left")) {
-      } else if (token.contains("left")) {
+      } else if (token.contains("none")) {
         leftLayout.setEnabled(true);
         leftLayout.setAlpha(1.0f);
         Log.e("amlan", "leftLayout enabled ");
 //      } else if (token.equalsIgnoreCase("right")) {
-      } else if (token.contains("right")) {
-        rightLayout.setEnabled(true);
-        rightLayout.setAlpha(1.0f);
-        Log.e("amlan", "rightLayout enabled ");
-//      } else if (token.equalsIgnoreCase("leftclick")) {
-
       }
+//      else if (token.contains("right")) {
+//        rightLayout.setEnabled(true);
+//        rightLayout.setAlpha(1.0f);
+//        Log.e("amlan", "rightLayout enabled ");
+////      } else if (token.equalsIgnoreCase("leftclick")) {
+//
+//      }
     }
   }
 
@@ -902,18 +904,34 @@ public class Camera2BasicFragment extends Fragment
     // classifier.getImageSizeY());
     classifier.classifyFrame(bitmap, textToShow);
     bitmap.recycle();
-
+    Log.e("amlan", "Running in Loop");
     Log.e("amlan", textToShow.toString());
 
     if (textToShow.toString().indexOf(":") != -1) {
       String token = textToShow.toString().substring(0, textToShow.toString().indexOf(":"));
+      String probabilityStr = textToShow.toString().substring(textToShow.toString().indexOf(":")+1,
+              textToShow.toString().indexOf(":")+7);
+      Log.e("amlan", "probabilityStr = "+probabilityStr.trim());
+      double probability=0.0;
+      try {
+        probability = Double.parseDouble(probabilityStr.trim());
+      } catch (NumberFormatException e) {
+        Log.e("amlan", "numberStr is not a number");
+      }
+      Log.e("amlan", "probability = "+probability);
       Log.e("amlan", "token = "+token);
       Activity activity = getActivity();
+      double finalProbability = probability;
+      String finalToken = token;
+      if(probability<0.8){
+        finalToken = "NONE";
+      }
+      String finalToken1 = finalToken;
       activity.runOnUiThread(
           new Runnable() {
             @Override
             public void run() {
-              highLightDirectionButton(token);
+              highLightDirectionButton(finalToken1);
             }
           });
     }
@@ -924,48 +942,54 @@ public class Camera2BasicFragment extends Fragment
   private void highLightDirectionButton(String token) {
 
     if (lastSelectedGesture != null && !token.equalsIgnoreCase(lastSelectedGesture)) {
-      if (lastSelectedGesture.equalsIgnoreCase("UP")) {
+      if (lastSelectedGesture.equalsIgnoreCase("OPEN") ) {
         upLayout.setBackgroundResource(R.drawable.base);
-      } else if (lastSelectedGesture.equalsIgnoreCase("DOWN")) {
+      } else if (lastSelectedGesture.equalsIgnoreCase("CLOSE") ) {
         downLayout.setBackgroundResource(R.drawable.base);
-      } else if (lastSelectedGesture.equalsIgnoreCase("LEFT")) {
-        leftLayout.setBackgroundResource(R.drawable.base);
-      } else if (lastSelectedGesture.equalsIgnoreCase("RIGHT")) {
-        rightLayout.setBackgroundResource(R.drawable.base);
-      } else if (lastSelectedGesture.equalsIgnoreCase("LEFTCLICK")) {
-        leftClickLayout.setBackgroundResource(R.drawable.base);
-      } else if (lastSelectedGesture.equalsIgnoreCase("RIGHTCLICK")) {
-        rightClickLayout.setBackgroundResource(R.drawable.base);
-      } else if (lastSelectedGesture.equalsIgnoreCase("SCROLLUP")) {
-        scrollUpLayout.setBackgroundResource(R.drawable.base);
-      } else if (lastSelectedGesture.equalsIgnoreCase("SCROLLDOWN")) {
-        scrollDownLayout.setBackgroundResource(R.drawable.base);
       }
+      else if (lastSelectedGesture.equalsIgnoreCase("NONE")) {
+        leftLayout.setBackgroundResource(R.drawable.base);
+      }
+//      else{
+//        leftLayout.setBackgroundResource(R.drawable.base);
+//      }
+//      else if (lastSelectedGesture.equalsIgnoreCase("RIGHT")) {
+//        rightLayout.setBackgroundResource(R.drawable.base);
+//      } else if (lastSelectedGesture.equalsIgnoreCase("LEFTCLICK")) {
+//        leftClickLayout.setBackgroundResource(R.drawable.base);
+//      } else if (lastSelectedGesture.equalsIgnoreCase("RIGHTCLICK")) {
+//        rightClickLayout.setBackgroundResource(R.drawable.base);
+//      } else if (lastSelectedGesture.equalsIgnoreCase("SCROLLUP")) {
+//        scrollUpLayout.setBackgroundResource(R.drawable.base);
+//      } else if (lastSelectedGesture.equalsIgnoreCase("SCROLLDOWN")) {
+//        scrollDownLayout.setBackgroundResource(R.drawable.base);
+//      }
     }
 
     if (lastSelectedGesture == null || !lastSelectedGesture.equalsIgnoreCase(token)) {
 
-      if (token.equalsIgnoreCase("UP")) {
+      if (token.equalsIgnoreCase("OPEN")) {
         if (upLayout.isEnabled()) upLayout.setBackgroundResource(R.drawable.selection_base);
-      } else if (token.equalsIgnoreCase("DOWN")) {
+      } else if (token.equalsIgnoreCase("CLOSE")) {
         if (downLayout.isEnabled()) downLayout.setBackgroundResource(R.drawable.selection_base);
-      } else if (token.equalsIgnoreCase("LEFT")) {
+      } else if (token.equalsIgnoreCase("NONE")) {
         if (leftLayout.isEnabled()) leftLayout.setBackgroundResource(R.drawable.selection_base);
-      } else if (token.equalsIgnoreCase("RIGHT")) {
-        if (rightLayout.isEnabled()) rightLayout.setBackgroundResource(R.drawable.selection_base);
-      } else if (token.equalsIgnoreCase("LEFTCLICK")) {
-        if (leftClickLayout.isEnabled())
-          leftClickLayout.setBackgroundResource(R.drawable.selection_base);
-      } else if (token.equalsIgnoreCase("RIGHTCLICK")) {
-        if (rightClickLayout.isEnabled())
-          rightClickLayout.setBackgroundResource(R.drawable.selection_base);
-      } else if (token.equalsIgnoreCase("SCROLLUP")) {
-        if (scrollUpLayout.isEnabled())
-          scrollUpLayout.setBackgroundResource(R.drawable.selection_base);
-      } else if (token.equalsIgnoreCase("SCROLLDOWN")) {
-        if (scrollDownLayout.isEnabled())
-          scrollDownLayout.setBackgroundResource(R.drawable.selection_base);
       }
+//      else if (token.equalsIgnoreCase("RIGHT")) {
+//        if (rightLayout.isEnabled()) rightLayout.setBackgroundResource(R.drawable.selection_base);
+//      } else if (token.equalsIgnoreCase("LEFTCLICK")) {
+//        if (leftClickLayout.isEnabled())
+//          leftClickLayout.setBackgroundResource(R.drawable.selection_base);
+//      } else if (token.equalsIgnoreCase("RIGHTCLICK")) {
+//        if (rightClickLayout.isEnabled())
+//          rightClickLayout.setBackgroundResource(R.drawable.selection_base);
+//      } else if (token.equalsIgnoreCase("SCROLLUP")) {
+//        if (scrollUpLayout.isEnabled())
+//          scrollUpLayout.setBackgroundResource(R.drawable.selection_base);
+//      } else if (token.equalsIgnoreCase("SCROLLDOWN")) {
+//        if (scrollDownLayout.isEnabled())
+//          scrollDownLayout.setBackgroundResource(R.drawable.selection_base);
+//      }
 
       lastSelectedGesture = token;
     }

@@ -43,7 +43,8 @@ public class ImageClassifierFloatInception extends ImageClassifier {
   ImageClassifierFloatInception(Activity activity) throws IOException {
     super(activity);
 //    labelProbArray = new float[1][getNumLabels()];
-    labelProbArray = new float[1][8];
+//    labelProbArray = new float[1][8];
+    labelProbArray = new float[1][3];
   }
 
   @Override

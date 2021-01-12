@@ -182,6 +182,7 @@ public abstract class ImageClassifier {
       e.printStackTrace();
     }
     try {
+
       Log.e("amlan", getLabelPath());
       Log.e("amlan", String.valueOf(labelList));
     }catch(Exception e){
