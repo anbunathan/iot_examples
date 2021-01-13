@@ -69,6 +69,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -77,6 +78,16 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+
+import org.eclipse.paho.android.service.MqttAndroidClient;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 /** Basic fragments for the Camera. */
 public class Camera2BasicFragment extends Fragment
@@ -117,6 +128,11 @@ public class Camera2BasicFragment extends Fragment
   private static final int MAX_PREVIEW_HEIGHT = 480;
 
   private String lastSelectedGesture;
+  MqttAndroidClient client = null;
+  boolean validMQTT=false;
+
+
+
   /**
    * {@link TextureView.SurfaceTextureListener} handles several lifecycle events on a {@link
    * TextureView}.
@@ -316,6 +332,7 @@ public class Camera2BasicFragment extends Fragment
   @Override
   public View onCreateView(
       LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
     return inflater.inflate(R.layout.fragment_camera2_basic, container, false);
   }
 
@@ -407,7 +424,8 @@ public class Camera2BasicFragment extends Fragment
   }
 
   private void enableDisableButtons() {
-
+    Log.e("amlan", "Connect with MQTT");
+    connect();
     String content = null;
 
     try {
@@ -503,6 +521,7 @@ public class Camera2BasicFragment extends Fragment
     } catch (IOException e) {
       Log.e(TAG, "Failed to initialize an image classifier.", e);
     }
+
     startBackgroundThread();
   }
 
@@ -926,6 +945,9 @@ public class Camera2BasicFragment extends Fragment
       if(probability<0.8){
         finalToken = "NONE";
       }
+      if(validMQTT==true) {
+        publish(client, finalToken);
+      }
       String finalToken1 = finalToken;
       activity.runOnUiThread(
           new Runnable() {
@@ -1035,4 +1057,111 @@ public class Camera2BasicFragment extends Fragment
           .create();
     }
   }
+
+  public void connect(){
+    Log.e("file", "Start Connecting with MQTT");
+    String clientId = MqttClient.generateClientId();
+//    final MqttAndroidClient client =
+
+    client =
+            new MqttAndroidClient(getActivity().getApplicationContext(), "tcp://digitran-mqtt.tk:1883",
+                    clientId);
+
+    MqttConnectOptions options = new MqttConnectOptions();
+    options.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1);
+    options.setCleanSession(false);
+//        options.setUserName("no");
+//        options.setPassword("no".toCharArray());
+    try {
+      IMqttToken token = client.connect(options);
+      Log.e("file", "Set action listener callback for MQTT");
+      //IMqttToken token = client.connect();
+      token.setActionCallback(new IMqttActionListener() {
+        @Override
+        public void onSuccess(IMqttToken asyncActionToken) {
+          // We are connected
+          Log.e("file", "onSuccess");
+          validMQTT=true;
+          //publish(client,"payloadd");
+          subscribe(client,"dht");
+          subscribe(client,"bmp");
+          client.setCallback(new MqttCallback() {
+            //            TextView tt = (TextView) findViewById(R.id.tt);
+//            TextView th = (TextView) findViewById(R.id.th);
+            @Override
+            public void connectionLost(Throwable cause) {
+
+            }
+            @Override
+            public void messageArrived(String topic, MqttMessage message) throws Exception {
+              Log.e("file", message.toString());
+
+              if (topic.equals("dht")){
+//                tt.setText(message.toString());
+                Log.e("file", "dht received");
+              }
+
+              if (topic.equals("bmp")){
+//                th.setText(message.toString());
+                Log.e("file", "bmp received");
+              }
+
+            }
+            @Override
+            public void deliveryComplete(IMqttDeliveryToken token) {
+
+            }
+          });
+        }
+
+        @Override
+        public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+          // Something went wrong e.g. connection timeout or firewall problems
+          Log.e("file", "onFailure");
+          validMQTT=false;
+
+        }
+      });
+    } catch (MqttException e) {
+      Log.d("amlan", "MQTT Exception");
+      e.printStackTrace();
+    }
+  }
+
+  public void publish(MqttAndroidClient client, String payload){
+    String topic = "gesture";
+    byte[] encodedPayload = new byte[0];
+    try {
+      encodedPayload = payload.getBytes("UTF-8");
+      MqttMessage message = new MqttMessage(encodedPayload);
+      client.publish(topic, message);
+    } catch (UnsupportedEncodingException | MqttException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void subscribe(MqttAndroidClient client , String topic){
+    int qos = 1;
+    try {
+      IMqttToken subToken = client.subscribe(topic, qos);
+      subToken.setActionCallback(new IMqttActionListener() {
+
+        @Override
+        public void onSuccess(IMqttToken asyncActionToken) {
+          // The message was published
+        }
+
+        @Override
+        public void onFailure(IMqttToken asyncActionToken,
+                              Throwable exception) {
+          // The subscription could not be performed, maybe the user was not
+          // authorized to subscribe on the specified topic e.g. using wildcards
+
+        }
+      });
+    } catch (MqttException e) {
+      e.printStackTrace();
+    }
+  }
+
 }
