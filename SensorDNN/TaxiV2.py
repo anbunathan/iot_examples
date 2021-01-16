@@ -1,6 +1,6 @@
 import gym
 from time import sleep
-from IPython.display import clear_output
+# from IPython.display import clear_output
 # Creating thr env
 env = gym.make("Taxi-v2").env
 from os import system, name
@@ -42,7 +42,7 @@ print("Penalties incurred: {}".format(penalties))
 # Printing all the possible actions, states, rewards.
 def framesfunc(frames):
     for i, frame in enumerate(frames):
-        clear_output(wait=True)
+        # clear_output(wait=True)
         sleep(0.2)
         print(frame['frame'].getvalue())
         print("Timestep: ", {i + 1})

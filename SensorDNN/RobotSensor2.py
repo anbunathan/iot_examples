@@ -28,7 +28,7 @@ import seaborn as sns
 
 ## Import Keras objects for Deep Learning
 
-from keras.models  import Sequential, K
+from keras.models  import Sequential
 from keras.layers import Input, Dense, Flatten, Dropout, BatchNormalization, LSTM
 from keras.optimizers import Adam, SGD, RMSprop
 

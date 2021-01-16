@@ -4,11 +4,13 @@ from __future__ import absolute_import, division, print_function  # Python 2/3 c
 import numpy as np
 import pandas as pd
 import pickle
-from keras.models import load_model
+import tensorflow as tf
+print(tf.__version__)
+from tensorflow.keras.models import load_model
 import warnings
 warnings.filterwarnings("ignore")
 from sklearn.model_selection import train_test_split
-from keras.models  import Sequential, K
+from keras.models  import Sequential
 from keras.layers import Input, Dense, Flatten, Dropout, BatchNormalization, LSTM
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.utils import np_utils

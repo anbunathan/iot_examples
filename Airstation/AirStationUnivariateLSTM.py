@@ -13,6 +13,9 @@ from tensorflow.keras.regularizers import l2
 from tensorflow.keras.callbacks import EarlyStopping
 import datetime
 
+#LSTM = Long Short Term Memory
+#RNN = Recurrent Neural Network
+
 # split a univariate dataset into train/test sets
 def split_dataset(data):
     # split into standard weeks

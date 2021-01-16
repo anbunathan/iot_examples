@@ -8,7 +8,7 @@ from keras.models import load_model
 import warnings
 warnings.filterwarnings("ignore")
 from sklearn.model_selection import train_test_split
-from keras.models  import Sequential, K
+from keras.models  import Sequential
 from keras.layers import Input, Dense, Flatten, Dropout, BatchNormalization, LSTM
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.utils import np_utils

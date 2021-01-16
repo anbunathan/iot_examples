@@ -1,7 +1,7 @@
 import gym
 import numpy as np
 import random
-from IPython.display import clear_output
+# from IPython.display import clear_output
 
 # Init Taxi-V2 Env
 env = gym.make("Taxi-v2").env
@@ -50,7 +50,7 @@ for i in range(1, 100001):
         epochs += 1
 
     if i % 100 == 0:
-        clear_output(wait=True)
+        # clear_output(wait=True)
         print("Episode: ", {i})
 
 print("Training finished.")

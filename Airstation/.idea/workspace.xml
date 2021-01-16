@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e724d464-83ba-4661-8999-4a6cbd1024f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e724d464-83ba-4661-8999-4a6cbd1024f4" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1eDQbyJ1QuoxpdqKBP2PvbqxS7S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -19,10 +17,53 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../workshop/IOT/backup/Desktop/develop" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.traintestexample2">
-    <configuration name="AirStationNaive" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.AirStationNaive">
+    <configuration name="AirStationARIMA" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Airstation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AirStationARIMA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AirStationAutocorrelation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Airstation" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AirStationAutocorrelation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AirStationNaive" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Airstation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -43,28 +84,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="AirStationUnivariateCNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Airstation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AirStationUnivariateCNN.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="AirStationUnivariateLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="AirStationUnivariateLSTM" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Airstation" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -106,41 +126,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="traintestexample2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Airstation" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/traintestexample2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.AirStationNaive" />
-      <item itemvalue="Python.AirStationUnivariateCNN" />
       <item itemvalue="Python.AirStationUnivariateLSTM" />
       <item itemvalue="Python.Correlation" />
-      <item itemvalue="Python.traintestexample2" />
+      <item itemvalue="Python.AirStationAutocorrelation" />
+      <item itemvalue="Python.AirStationARIMA" />
+      <item itemvalue="Python.AirStationNaive" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.traintestexample2" />
+        <item itemvalue="Python.AirStationNaive" />
+        <item itemvalue="Python.AirStationARIMA" />
+        <item itemvalue="Python.AirStationAutocorrelation" />
         <item itemvalue="Python.Correlation" />
         <item itemvalue="Python.AirStationUnivariateLSTM" />
-        <item itemvalue="Python.AirStationUnivariateCNN" />
-        <item itemvalue="Python.AirStationNaive" />
       </list>
     </recent_temporary>
   </component>
@@ -158,25 +157,33 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1345" height="178" key="GridCell.Tab.0.bottom" timestamp="1593856308513">
+    <state x="40" y="120" width="1182" height="544" key="DiffContextDialog" timestamp="1609687276359">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1593856308513" />
-    <state width="1345" height="178" key="GridCell.Tab.0.center" timestamp="1593856308513">
+    <state x="40" y="120" width="1182" height="544" key="DiffContextDialog/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1609687276359" />
+    <state x="462" y="118" key="FileChooserDialogImpl" timestamp="1609704197341">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="178" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1593856308513" />
-    <state width="1345" height="178" key="GridCell.Tab.0.left" timestamp="1593856308513">
+    <state x="462" y="118" key="FileChooserDialogImpl/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1609704197341" />
+    <state width="1345" height="178" key="GridCell.Tab.0.bottom" timestamp="1609704204678">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="178" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1593856308513" />
-    <state width="1345" height="178" key="GridCell.Tab.0.right" timestamp="1593856308513">
+    <state width="1345" height="178" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1609704204678" />
+    <state width="1345" height="178" key="GridCell.Tab.0.center" timestamp="1609704204677">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="178" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1593856308513" />
-    <state x="184" y="8" key="SettingsEditor" timestamp="1593853833374">
+    <state width="1345" height="178" key="GridCell.Tab.0.center/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1609704204677" />
+    <state width="1345" height="178" key="GridCell.Tab.0.left" timestamp="1609704204677">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="8" key="SettingsEditor/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1593853833374" />
+    <state width="1345" height="178" key="GridCell.Tab.0.left/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1609704204677" />
+    <state width="1345" height="178" key="GridCell.Tab.0.right" timestamp="1609704204677">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="178" key="GridCell.Tab.0.right/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1609704204677" />
+    <state x="119" y="3" key="SettingsEditor" timestamp="1609687884173">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="119" y="3" key="SettingsEditor/0.0.1366.728/1366.0.1366.728@0.0.1366.728" timestamp="1609687884173" />
   </component>
 </project>
